@@ -41,7 +41,7 @@ data "vsphere_resource_pool" "pool" {
 resource "vsphere_virtual_machine" "VM" {
   guest_id = "windows9Server64Guest"
   count = "1"
-  name   = "TFdeployVM"
+  name   = "whtm70638 - mtlmprtg02"
   resource_pool_id = "${data.vsphere_compute_cluster.cluster.resource_pool_id}"
     network_interface {
     network_id   = "${data.vsphere_network.network.id}"
@@ -56,7 +56,7 @@ resource "vsphere_virtual_machine" "VM" {
    clone {
     template_uuid = "${data.vsphere_virtual_machine.template.id}"
    }
-  #vcpu   = 2
-  #memory = 4096
+  vcpu   = 2
+  memory = 16384
   # ...
 } 
